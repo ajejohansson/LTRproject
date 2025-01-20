@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>1</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#ff7f00", "date": "", "id": "crippled_1", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIt is a high and clear duty of the people of this State to\u003cbr\u003ewatch vigilantly over their \u003cb\u003ecrippled\u003c/b\u003e banks; to see that their\u003cbr\u003eassets are honestly applied to the payment of the bonds; and to adopt\u003cbr\u003esuch legislative measures as shall secure and preserve the faith of\u003cbr\u003ethe State towards its creditors, and procure for themselves again the\u003cbr\u003euse of the foreign capital which they so much need.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_1\u003cbr\u003etype: usage\u003c/p\u003e", "x": 497.67942444292424, "y": 281.04587547614824}, {"color": "#ff7f00", "date": "", "id": "crippled_8", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eYet it was not safe to proceed farther, in the \u003cb\u003ecrippled\u003c/b\u003e\u003cbr\u003estate of their vessel.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_8\u003cbr\u003etype: usage\u003c/p\u003e", "x": 451.15367293968256, "y": -545.7729834086178}, {"color": "#377eb8", "date": "", "id": "crippled_5", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIt is such a sad thing to be born a sneaking fellow, so much\u003cbr\u003eworse than to inherit a hump-back or a couple of club-feet, that I\u003cbr\u003esometimes feel as if we ought to love the \u003cb\u003ecrippled\u003c/b\u003e souls, if I\u003cbr\u003emay use this expression, with a certain tenderness which we need not\u003cbr\u003ewaste on noble natures.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_5\u003cbr\u003etype: usage\u003c/p\u003e", "x": -346.93349302075154, "y": -251.7755281512842}, {"color": "#377eb8", "date": "", "id": "crippled_7", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIt made repeated attempts to jump upon its foe, which, in spite\u003cbr\u003eof the \u003cb\u003ecrippled\u003c/b\u003e condition of its leg and the loss of blood,\u003cbr\u003eArundel found it difficult to elude.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_7\u003cbr\u003etype: usage\u003c/p\u003e", "x": -19.488484149492294, "y": 95.26030405500433}, {"color": "#377eb8", "date": "", "id": "crippled_6", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eHe still continues to pay tribute to the Sultan, constrained\u003cbr\u003edoubtless to make the last payment by the \u003cb\u003ecrippled\u003c/b\u003e state in\u003cbr\u003ewhich he was left by the terrible plague of 1834; and, without any\u003cbr\u003eenemy to fear, is at this moment draining the resources of\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_6\u003cbr\u003etype: usage\u003c/p\u003e", "x": -554.3966034057477, "y": -129.7041910253512}, {"color": "#377eb8", "date": "", "id": "crippled_2", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eAs she watched the grass grow beneath the archway, in the sweet\u003cbr\u003edreams of fancy her \u003cb\u003ecrippled\u003c/b\u003e form strayed among verdant fields\u003cbr\u003eand sat down by rippling streams; as she surveyed the tempting display\u003cbr\u003ein the green-grocer \u0027s shop, she tasted, by means of some inward\u003cbr\u003esense, rich fruits whose names she scarcely knew; as the gentle breeze\u003cbr\u003ewaved the green boughs above the horses \u0027 heads, she seemed to\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_2\u003cbr\u003etype: usage\u003c/p\u003e", "x": -167.88175837832227, "y": 235.77449202437225}, {"color": "#377eb8", "date": "", "id": "crippled_3", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eClose beside his mother in a green grave they placed the\u003cbr\u003e\u003cb\u003ecrippled\u003c/b\u003e form, that was to come forth in the resurrection,\u003cbr\u003eperchance the more glorified for its earthly trial.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_3\u003cbr\u003etype: usage\u003c/p\u003e", "x": -167.19735907756444, "y": -109.66929797359626}, {"color": "#377eb8", "date": "", "id": "crippled_4", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eHe did not, however, take such good care of the ease of his\u003cbr\u003eclients, or whosoever his visiters might be, as the chairs were weak\u003cbr\u003ebrothers, one having a leg gone, the other having a broken back; so\u003cbr\u003ethat he who sat in the former had to substitute one of his own legs as\u003cbr\u003ea supporter of the equilibrium, while the other had to humor the\u003cbr\u003e\u003cb\u003ecrippled\u003c/b\u003e vertebr with gingerly caution or\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: crippled_4\u003cbr\u003etype: usage\u003c/p\u003e", "x": -381.91930829868454, "y": 39.202109349962235}]);
+        edges = new vis.DataSet([{"color": "black", "from": "crippled_5", "label": 4, "to": "crippled_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_5", "label": 4, "to": "crippled_6", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_5", "label": 4, "to": "crippled_7", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_5", "label": 4, "to": "crippled_2", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_5", "label": 4, "to": "crippled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_7", "label": 4, "to": "crippled_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_7", "label": 4, "to": "crippled_2", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_7", "label": 4, "to": "crippled_6", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_7", "label": 4, "to": "crippled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_6", "label": 4, "to": "crippled_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_6", "label": 4, "to": "crippled_2", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_6", "label": 4, "to": "crippled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_2", "label": 4, "to": "crippled_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_2", "label": 4, "to": "crippled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_3", "label": 4, "to": "crippled_4", "weight": 4.0, "width": 4}, {"color": "lightgray", "from": "crippled_5", "label": 2, "to": "crippled_1", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_5", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_6", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_1", "label": 2, "to": "crippled_7", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_7", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_6", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_2", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_3", "label": 2, "to": "crippled_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_8", "label": 2, "to": "crippled_4", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

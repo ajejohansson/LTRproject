@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>1</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#377eb8", "date": "", "id": "lame_17", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eI am von \u003cb\u003elame\u003c/b\u003e duck, and I shall vaddle across de gran\u003cbr\u003eocean for Paris, vish is de only valuable vatare privilege dat is left\u003cbr\u003eme present! ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_17\u003cbr\u003etype: usage\u003c/p\u003e", "x": -107.24488805481366, "y": 750.0}, {"color": "#377eb8", "date": "", "id": "lame_13", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e`` Well, Thomson \u0027s best horse is so \u003cb\u003elame\u003c/b\u003e that he ca n\u0027t\u003cbr\u003euse him to-day, and the other is a-drawin \u0027 timber for the dam.\u003cbr\u003e``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_13\u003cbr\u003etype: usage\u003c/p\u003e", "x": 383.2260352980164, "y": -659.5056084439603}, {"color": "#377eb8", "date": "", "id": "lame_20", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eI tried to saw him up, but it was no use; he ran for a couple\u003cbr\u003eof miles, and did not slacken till he had brought me to the door of an\u003cbr\u003eold, decayed tavern, where I resigned him to the charge of a\u003cbr\u003e\u003cb\u003elame\u003c/b\u003e hostler, and made my way into the house in search of the\u003cbr\u003elandlord.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_20\u003cbr\u003etype: usage\u003c/p\u003e", "x": 105.34296588306736, "y": -720.7980490545275}, {"color": "#377eb8", "date": "", "id": "lame_2", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eHe need not ape a \u003cb\u003elame\u003c/b\u003e leg or a broken back.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_2\u003cbr\u003etype: usage\u003c/p\u003e", "x": 184.09442438391451, "y": -453.09176192517936}, {"color": "#377eb8", "date": "", "id": "lame_12", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eFor instance, the description in Pelham of Monsieur Margot \u0027s\u003cbr\u003eperson is very good; but when he brings him to act in what he intends\u003cbr\u003efor a laughable situation, as in the affair of the basket and Mrs.\u003cbr\u003eGreen, it is \u003cb\u003elame\u003c/b\u003e and labored in the highest degree, and the\u003cbr\u003eend of the chapter becomes a `` consummation devoutly to be wished.\u003cbr\u003e``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_12\u003cbr\u003etype: usage\u003c/p\u003e", "x": -165.4068388008378, "y": 412.75047348162764}, {"color": "#377eb8", "date": "", "id": "lame_18", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eI am \u003cb\u003elame\u003c/b\u003e to be sure, but I am fit for labour\u003cbr\u003estill.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_18\u003cbr\u003etype: usage\u003c/p\u003e", "x": 262.41805549419934, "y": -227.85749066530255}, {"color": "#377eb8", "date": "", "id": "lame_8", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThere was some motive to it, among the class of people, in a\u003cbr\u003esort of tippling tavern, kept by one Griffith, a \u003cb\u003elame\u003c/b\u003e man,\u003cbr\u003eabout three miles off.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_8\u003cbr\u003etype: usage\u003c/p\u003e", "x": 535.4203629046292, "y": -468.1845501612194}, {"color": "#377eb8", "date": "", "id": "lame_15", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIn some cases the children had nothing to sell, and they simply\u003cbr\u003eheld out their hands to beg as the travellers went by; and there were\u003cbr\u003eseveral \u003cb\u003elame\u003c/b\u003e persons, and idiots, and blind persons, and other\u003cbr\u003eobjects of misery that occasionally appeared imploring charity.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_15\u003cbr\u003etype: usage\u003c/p\u003e", "x": 532.5627184360903, "y": -214.36254784107206}, {"color": "#377eb8", "date": "", "id": "lame_16", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eWe believe that some regret is generally felt, that Miss\u003cbr\u003eWardour was not more distinguished from other young ladies, and the\u003cbr\u003efalse alarm at the close might have seemed a \u003cb\u003elame\u003c/b\u003e conclusion,\u003cbr\u003e// had it not been borne out by many similar scenes in this country\u003cbr\u003eand Great Britain during the late war, when, as every one remembers,\u003cbr\u003ethe mistake was ludicrous, but the excitement was sublime.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_16\u003cbr\u003etype: usage\u003c/p\u003e", "x": -27.012784374421106, "y": 126.71819953078511}, {"color": "#377eb8", "date": "", "id": "lame_9", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eSo unjust and unsatisfactory, so \u003cb\u003elame\u003c/b\u003e and mutilated did\u003cbr\u003ethe whole report appear, that the authors of the new method published\u003cbr\u003ean answer, in which they accused the committee of not having repeated\u003cbr\u003etheir experiments.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: lame_9\u003cbr\u003etype: usage\u003c/p\u003e", "x": 688.2191065124347, "y": 174.23059917556836}]);
+        edges = new vis.DataSet([{"color": "black", "from": "lame_13", "label": 4, "to": "lame_20", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_13", "label": 4, "to": "lame_2", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_13", "label": 4, "to": "lame_18", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_13", "label": 4, "to": "lame_8", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_13", "label": 4, "to": "lame_15", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_20", "label": 4, "to": "lame_2", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_20", "label": 4, "to": "lame_8", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_20", "label": 4, "to": "lame_15", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_20", "label": 4, "to": "lame_18", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_2", "label": 4, "to": "lame_18", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_2", "label": 4, "to": "lame_8", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_2", "label": 4, "to": "lame_15", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_12", "label": 4, "to": "lame_16", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_18", "label": 4, "to": "lame_15", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_18", "label": 4, "to": "lame_8", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_8", "label": 4, "to": "lame_15", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_15", "label": 4, "to": "lame_9", "weight": 4.0, "width": 4}, {"color": "black", "from": "lame_16", "label": 3, "to": "lame_9", "weight": 3.0, "width": 4}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_15", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_20", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_13", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_17", "label": 2, "to": "lame_18", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_13", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_13", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_13", "label": 2, "to": "lame_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_20", "label": 2, "to": "lame_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_20", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_20", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_2", "label": 2, "to": "lame_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_2", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_2", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_12", "label": 2, "to": "lame_18", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_12", "label": 2, "to": "lame_15", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_12", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_12", "label": 2, "to": "lame_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_18", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_18", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_8", "label": 2, "to": "lame_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_8", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "lame_15", "label": 2, "to": "lame_16", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

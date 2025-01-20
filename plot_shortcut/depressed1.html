@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>1</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#4daf4a", "date": "", "id": "depressed_6", "label": "2", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eimpossible to confine, towered away into the atmosphere of the\u003cbr\u003eapartment, and were occasionally pricked up, or \u003cb\u003edepressed\u003c/b\u003e, as\u003cbr\u003ethe sounds of bursting bottles increased, or died away, in the cellars\u003cbr\u003eunderneath.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_6\u003cbr\u003etype: usage\u003c/p\u003e", "x": -604.4603975932508, "y": 439.96734294217015}, {"color": "#4daf4a", "date": "", "id": "depressed_12", "label": "2", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003esame quantity for the depth of the trough, or hollow between\u003cbr\u003etwo waves, we shall have from twenty-five to thirty feet as the utmost\u003cbr\u003ealtitude which any swell of water can have, reckoning from the most\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e portions of the surface near it.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_12\u003cbr\u003etype: usage\u003c/p\u003e", "x": -750.0, "y": 162.66029067314318}, {"color": "#377eb8", "date": "", "id": "depressed_9", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThey stand then in a situation to do mischief from necessity -\u003cbr\u003e- either their customers or themselves must fail in difficult times,\u003cbr\u003eand frequently, in the doubtful struggle, both, and leave the country\u003cbr\u003eworse off and more \u003cb\u003edepressed\u003c/b\u003e than if they had never\u003cbr\u003eexisted.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_9\u003cbr\u003etype: usage\u003c/p\u003e", "x": -253.73389666229986, "y": -553.4487863312581}, {"color": "#377eb8", "date": "", "id": "depressed_2", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eas honest and honorable, and as much of the gentleman which\u003cbr\u003enature meant him for, as an irregular life and \u003cb\u003edepressed\u003c/b\u003e\u003cbr\u003ecircumstances will permit any man to be.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_2\u003cbr\u003etype: usage\u003c/p\u003e", "x": 630.533539605512, "y": -423.6049314692491}, {"color": "#377eb8", "date": "", "id": "depressed_4", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIt is a movement of the people in the Northern, Middle, and\u003cbr\u003eWestern States, who feeling the \u003cb\u003edepressed\u003c/b\u003e state of their\u003cbr\u003eagriculture from competition with Europe, and the want of art adequate\u003cbr\u003emarket, are taught to look up to Manufactures, as best calculated to\u003cbr\u003ecreate a home market for their grain, wool, iron, and other products\u003cbr\u003eof their soil, regardless\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_4\u003cbr\u003etype: usage\u003c/p\u003e", "x": 51.38711210661644, "y": -331.33572362025103}, {"color": "#377eb8", "date": "", "id": "depressed_10", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThe place is favorable to the action of artillery and cavalry;\u003cbr\u003eand the safer course would have been to retire to the hills, in order\u003cbr\u003eto take advantage of the movements of the enemy; but the Highlanders,\u003cbr\u003eit must be remembered, were on the point of starving, and after being\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e hy a retreat, would not have held together another\u003cbr\u003eday.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_10\u003cbr\u003etype: usage\u003c/p\u003e", "x": 36.62686727634381, "y": -724.3429930010346}, {"color": "#377eb8", "date": "", "id": "depressed_3", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eOther reasons for the \u003cb\u003edepressed\u003c/b\u003e condition of letters in\u003cbr\u003ethis country have been propounded, as well by our own writers as by\u003cbr\u003eforeigners.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_3\u003cbr\u003etype: usage\u003c/p\u003e", "x": 626.8736573665972, "y": -91.27655998341532}, {"color": "#377eb8", "date": "", "id": "depressed_5", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eSince that period, he has played at various places in the\u003cbr\u003eUnion, but we shall content ourselves with noticing but one other\u003cbr\u003eengagement, in 1844, at which time the drama was in a most\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e condition, owing to a variety of\u003cbr\u003ecircumstances.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_5\u003cbr\u003etype: usage\u003c/p\u003e", "x": 367.6027276210596, "y": -252.13420998488724}, {"color": "#ff7f00", "date": "", "id": "depressed_8", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eor discouragement of any kind, so long is the moral elevation\u003cbr\u003eof that mass proportionately \u003cb\u003edepressed\u003c/b\u003e and retarded.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_8\u003cbr\u003etype: usage\u003c/p\u003e", "x": -47.103727746115254, "y": 350.9141770317837}, {"color": "#ff7f00", "date": "", "id": "depressed_11", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eI had left Astrna behind me in a \u003cb\u003edepressed\u003c/b\u003e and fretful\u003cbr\u003emood.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: depressed_11\u003cbr\u003etype: usage\u003c/p\u003e", "x": 37.96590919147591, "y": 726.5869349659157}]);
+        edges = new vis.DataSet([{"color": "black", "from": "depressed_6", "label": 4, "to": "depressed_12", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_8", "label": 4, "to": "depressed_11", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_9", "label": 4, "to": "depressed_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_2", "label": 3, "to": "depressed_4", "weight": 3.0, "width": 4}, {"color": "black", "from": "depressed_2", "label": 4, "to": "depressed_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_2", "label": 4, "to": "depressed_5", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_2", "label": 3, "to": "depressed_10", "weight": 3.0, "width": 4}, {"color": "black", "from": "depressed_4", "label": 4, "to": "depressed_5", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_4", "label": 4, "to": "depressed_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_10", "label": 3, "to": "depressed_5", "weight": 3.0, "width": 4}, {"color": "black", "from": "depressed_3", "label": 3, "to": "depressed_5", "weight": 3.0, "width": 4}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_8", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_6", "label": 2, "to": "depressed_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_8", "label": 2, "to": "depressed_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_12", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_9", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_9", "label": 2, "to": "depressed_2", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_9", "label": 2, "to": "depressed_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_9", "label": 2, "to": "depressed_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_9", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_2", "label": 2, "to": "depressed_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_4", "label": 2, "to": "depressed_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_4", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_11", "label": 2, "to": "depressed_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_11", "label": 2, "to": "depressed_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_11", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_10", "label": 2, "to": "depressed_3", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

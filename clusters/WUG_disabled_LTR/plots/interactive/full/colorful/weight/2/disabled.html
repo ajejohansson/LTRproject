@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>2</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#377eb8", "date": "", "id": "disabled_41", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIf you become \u003cb\u003edisabled\u003c/b\u003e from your problem, let \u0027s say a\u003cbr\u003estroke instead of the TIAs.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_41\u003cbr\u003etype: usage\u003c/p\u003e", "x": -194.35124142678774, "y": -297.86996318881097}, {"color": "#377eb8", "date": "", "id": "disabled_21", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eEEOC regulations, 29 CFR 1630.2 ( 0 ) ( 3 ), provide that\u003cbr\u003eemployers may have to initiate `` an informal, interactive process ``\u003cbr\u003ewith qualified \u003cb\u003edisabled\u003c/b\u003e individuals `` to identify the precise\u003cbr\u003elimitations resulting from the disability and the potential reasonable\u003cbr\u003eaccommodations that could overcome those limitations. ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_21\u003cbr\u003etype: usage\u003c/p\u003e", "x": -246.3099350299536, "y": -122.68145815456944}, {"color": "#377eb8", "date": "", "id": "disabled_39", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eAnd in 1980 the Social Security Act was temporarily amended to\u003cbr\u003eallow the \u003cb\u003edisabled\u003c/b\u003e to earn more than $ 280 a month without\u003cbr\u003eforfeiting their government assistance.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_39\u003cbr\u003etype: usage\u003c/p\u003e", "x": 262.56837281422247, "y": -194.50601410880722}, {"color": "#377eb8", "date": "", "id": "disabled_29", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThe country \u0027s 2000 census puts the \u003cb\u003edisabled\u003c/b\u003e population\u003cbr\u003eat 1.8 million, but the survey \u0027s method has been\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_29\u003cbr\u003etype: usage\u003c/p\u003e", "x": 152.2434377002752, "y": -467.5596288276258}, {"color": "#377eb8", "date": "", "id": "disabled_17", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eSo, too, was the $ i.8-billion program providing educational\u003cbr\u003ebenefits for the children of retired \u003cb\u003edisabled\u003c/b\u003e or deceased\u003cbr\u003eworkers. ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_17\u003cbr\u003etype: usage\u003c/p\u003e", "x": -143.87358611205912, "y": 51.50876344775959}, {"color": "#377eb8", "date": "", "id": "disabled_45", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eyour message, `` he stammered, then added, `` Since Switzer put\u003cbr\u003eme on the \u003cb\u003edisabled\u003c/b\u003e list, I \u0027ve been taking it easy, trying to\u003cbr\u003erest. ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_45\u003cbr\u003etype: usage\u003c/p\u003e", "x": 513.1257178630543, "y": 134.19324392645817}, {"color": "#377eb8", "date": "", "id": "disabled_48", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThis was before Boots got \u003cb\u003edisabled\u003c/b\u003e and had to come live\u003cbr\u003ewith us.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_48\u003cbr\u003etype: usage\u003c/p\u003e", "x": 57.425180673063245, "y": -290.4128338188895}, {"color": "#377eb8", "date": "", "id": "disabled_47", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003estate and local outlays for the blind, aged, \u003cb\u003edisabled\u003c/b\u003e\u003cbr\u003eand others unable to provide for themselves reached a record $ 4\u003cbr\u003ebillion in the Government-fiscal year ended June 30, up from $ 3.7\u003cbr\u003ebillion in the previous year and from le,, ss than $ 1 billion a\u003cbr\u003edecade and a half earlier.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_47\u003cbr\u003etype: usage\u003c/p\u003e", "x": -5.73173930256375, "y": -107.6825280007586}, {"color": "#377eb8", "date": "", "id": "disabled_40", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eAlthough 97 countries have some sort of gender quota system for\u003cbr\u003egovernment positions, according to the Inter-Parliamentary Union, an\u003cbr\u003eorganization that fosters exchange among parliaments, women fill only\u003cbr\u003e17 percent of parliamentary seats worldwide and 14 percent of\u003cbr\u003eministerial-level positions -- and most of those are related to\u003cbr\u003efamily, youth, the \u003cb\u003edisabled\u003c/b\u003e, and the elderly.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_40\u003cbr\u003etype: usage\u003c/p\u003e", "x": 318.2070748956362, "y": -352.3525681078894}, {"color": "#377eb8", "date": "", "id": "disabled_46", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eGlenmillsgolf.com The Drill Sergeant JIM ESTES, 43 Giving\u003cbr\u003e\u003cb\u003edisabled\u003c/b\u003e Iraq War veterans something to swing about `` I played\u003cbr\u003ethe Nationwide Tour, and I teach here as director of\u003cbr\u003einstruction\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: disabled_46\u003cbr\u003etype: usage\u003c/p\u003e", "x": -19.669007728688182, "y": 164.48332736260986}]);
+        edges = new vis.DataSet([{"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_48", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_39", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_29", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 3, "to": "disabled_45", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_21", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_41", "label": 4, "to": "disabled_17", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_48", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_29", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_39", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 3, "to": "disabled_45", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_21", "label": 4, "to": "disabled_17", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_48", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_29", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_17", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 3, "to": "disabled_45", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_39", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 4, "to": "disabled_48", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 3, "to": "disabled_45", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_29", "label": 4, "to": "disabled_17", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_17", "label": 4, "to": "disabled_48", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_17", "label": 4, "to": "disabled_45", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_17", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_17", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_17", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_45", "label": 3, "to": "disabled_40", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_45", "label": 3, "to": "disabled_47", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_45", "label": 3, "to": "disabled_46", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_45", "label": 3, "to": "disabled_48", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_48", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_48", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_48", "label": 4, "to": "disabled_47", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_47", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_47", "label": 4, "to": "disabled_40", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_40", "label": 4, "to": "disabled_46", "weight": 4.0, "width": 4}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

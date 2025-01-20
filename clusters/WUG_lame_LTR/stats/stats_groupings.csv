@@ -1,0 +1,2 @@
+lemma	grouping	nodes	nodes1	nodes2	cluster_freq_dist	cluster_freq_dist1	cluster_freq_dist2	cluster_prob_dist	cluster_prob_dist1	cluster_prob_dist2	cluster_number	cluster_number1	cluster_number2	change_binary	change_binary_gain	change_binary_loss	change_graded	k1	n1	k2	n2	EARLIER	LATER	COMPARE
+lame	1_2	20	10	10	[20]	[10]	[10]	[1.0]	[1.0]	[1.0]	1	1	1	0	0	0	0.0	1	3	1	3	2.7777777777777777	2.8222222222222224	2.32

@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>1</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#377eb8", "date": "", "id": "disabled_2", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003es landau, which is more convenient for my \u003cb\u003edisabled\u003c/b\u003e\u003cbr\u003elegs.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_2\u003cbr\u003etype: usage\u003c/p\u003e", "x": 307.14672570826, "y": -21.22300813358835}, {"color": "#377eb8", "date": "", "id": "disabled_1", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eIt was during one of these periods that I received from Madrid\u003cbr\u003ethe materials for the `` History of Ferdinand and Isabella, `` and in\u003cbr\u003emy \u003cb\u003edisabled\u003c/b\u003e condition, with my Transatlantic treasures lying\u003cbr\u003earound me, I was like one pining from hunger in the midst of\u003cbr\u003eabundance.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_1\u003cbr\u003etype: usage\u003c/p\u003e", "x": 137.0307263021253, "y": 405.80954835544827}, {"color": "#377eb8", "date": "", "id": "disabled_8", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eEngaged beyond retreat in an unfavorable position, surrounded,\u003cbr\u003eas was soon evident by a greatly superior force, the gallant efforts\u003cbr\u003eof the detachment to disengage itself were in vain; the officers were\u003cbr\u003eshot down or \u003cb\u003edisabled\u003c/b\u003e, and some sixteen officers and men,\u003cbr\u003ealtogether, being killed or wounded, the remainder were compelled to\u003cbr\u003esurrender\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_8\u003cbr\u003etype: usage\u003c/p\u003e", "x": 382.3929219340295, "y": 323.0359603958766}, {"color": "#377eb8", "date": "", "id": "disabled_7", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThis property increased in value, until it enabled the trustees\u003cbr\u003eto purchase a farm on Staten Island, and erect a noble stone edifice,\u003cbr\u003eas a hospital for \u003cb\u003edisabled\u003c/b\u003e seamen; with an annual income of\u003cbr\u003enearly thirty thousand dollars.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_7\u003cbr\u003etype: usage\u003c/p\u003e", "x": -45.28047637866716, "y": -436.52243832813565}, {"color": "#377eb8", "date": "", "id": "disabled_6", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eas close a friend to the opposite element, and having recovered\u003cbr\u003ehis popularity in the interval since his defeat, by insuring two poor\u003cbr\u003ecartmen \u0027s sheds at his own risk, and adopting the son of a\u003cbr\u003e\u003cb\u003edisabled\u003c/b\u003e sailor as one of the secretaries of the company (\u003cbr\u003ethough the young gentleman was as innocent of pot-hooks and ledgers as\u003cbr\u003ea Kamschatkan ), Mr. Blinker was nominated by the advocates of the\u003cbr\u003eUpper Wabash.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_6\u003cbr\u003etype: usage\u003c/p\u003e", "x": 145.96763165668028, "y": 72.21888991491362}, {"color": "#377eb8", "date": "", "id": "disabled_10", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThe address of the \u003cb\u003edisabled\u003c/b\u003e pilot seemed to restore\u003cbr\u003eanimation to the buccaneer, and he\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_10\u003cbr\u003etype: usage\u003c/p\u003e", "x": 555.0408559428436, "y": -163.4429841773861}, {"color": "#4daf4a", "date": "", "id": "disabled_5", "label": "2", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eNo child was disconcerted, \u003cb\u003edisabled\u003c/b\u003e, or bereft of his\u003cbr\u003esenses, through fear.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_5\u003cbr\u003etype: usage\u003c/p\u003e", "x": -750.0, "y": -281.7703108734109}, {"color": "#ff7f00", "date": "", "id": "disabled_9", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eMr. Dodds was a patriotic man; in his way; and a\u003cbr\u003e\u003cb\u003edisabled\u003c/b\u003e prop of the naval power of his country seldom appealed\u003cbr\u003eto him in vain, but, on this occasion, he passed on, and the man with\u003cbr\u003eno eyes paused in his strain to bestow\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_9\u003cbr\u003etype: usage\u003c/p\u003e", "x": -506.4177583548306, "y": 559.7125684536894}, {"color": "#ff7f00", "date": "", "id": "disabled_3", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eWhen darkness came on, sky and sea roared and split with the\u003cbr\u003ethunder, and blazed with the lightning, that showed the\u003cbr\u003e\u003cb\u003edisabled\u003c/b\u003e masts fluttering here and there with the rags which\u003cbr\u003ethe first fury of the\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_3\u003cbr\u003etype: usage\u003c/p\u003e", "x": -255.08646614528914, "y": 706.3126436237442}, {"color": "#ff7f00", "date": "", "id": "disabled_4", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003ewhen Perry left his almost conquered and \u003cb\u003edisabled\u003c/b\u003e ship,\u003cbr\u003ethe Lawrence, in an open boat, exposed to the fire of the // British\u003cbr\u003efleet, and passed to the Niagara, a ship fresh and uninjured, thus\u003cbr\u003edeciding the fortunes of the day, and capturing every vessel of a\u003cbr\u003esuperior enemy? ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 1\u003cbr\u003eidentifier: disabled_4\u003cbr\u003etype: usage\u003c/p\u003e", "x": -664.4284350113452, "y": 318.7487902393707}]);
+        edges = new vis.DataSet([{"color": "black", "from": "disabled_2", "label": 3, "to": "disabled_1", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_2", "label": 3, "to": "disabled_10", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_2", "label": 4, "to": "disabled_7", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_2", "label": 4, "to": "disabled_6", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_2", "label": 3, "to": "disabled_8", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_1", "label": 3, "to": "disabled_7", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_1", "label": 3, "to": "disabled_10", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_1", "label": 3, "to": "disabled_6", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_1", "label": 4, "to": "disabled_8", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_8", "label": 3, "to": "disabled_7", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_8", "label": 4, "to": "disabled_10", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_8", "label": 3, "to": "disabled_6", "weight": 3.0, "width": 4}, {"color": "black", "from": "disabled_7", "label": 4, "to": "disabled_10", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_7", "label": 4, "to": "disabled_6", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_9", "label": 4, "to": "disabled_3", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_9", "label": 4, "to": "disabled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_3", "label": 4, "to": "disabled_4", "weight": 4.0, "width": 4}, {"color": "black", "from": "disabled_6", "label": 3, "to": "disabled_10", "weight": 3.0, "width": 4}, {"color": "lightgray", "from": "disabled_2", "label": 2, "to": "disabled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_2", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_2", "label": 2, "to": "disabled_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_2", "label": 2, "to": "disabled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_1", "label": 2, "to": "disabled_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_1", "label": 2, "to": "disabled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_1", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_1", "label": 2, "to": "disabled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_8", "label": 2, "to": "disabled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_8", "label": 2, "to": "disabled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_8", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_8", "label": 2, "to": "disabled_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_7", "label": 2, "to": "disabled_5", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_7", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_7", "label": 2, "to": "disabled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_7", "label": 2, "to": "disabled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_5", "label": 2, "to": "disabled_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_5", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_5", "label": 2, "to": "disabled_3", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_5", "label": 2, "to": "disabled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_5", "label": 2, "to": "disabled_6", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_9", "label": 2, "to": "disabled_6", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_9", "label": 2, "to": "disabled_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_3", "label": 2, "to": "disabled_10", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_3", "label": 2, "to": "disabled_6", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_6", "label": 2, "to": "disabled_4", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "disabled_4", "label": 2, "to": "disabled_10", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

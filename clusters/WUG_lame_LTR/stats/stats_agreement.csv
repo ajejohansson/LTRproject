@@ -1,0 +1,3 @@
+data	avg_judgment_no	kri_full	kri2_full	spr_mean_weighted	spr_mean	ham_mean_weighted	ham_mean	judgments_annotator0	judgments_total	judgment_1.0	judgment_2.0	judgment_3.0	judgment_4.0	judgment_0.0
+full	1.0	nan	nan	0.0	nan	0.0	nan	190	190	0	129	18	43	0
+lame	1.0	nan	nan	0.0	nan	0.0	nan	190	190	0	129	18	43	0

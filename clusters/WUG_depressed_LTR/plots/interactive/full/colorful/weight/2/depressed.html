@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>2</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#377eb8", "date": "", "id": "depressed_27", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eWhat rankled most deeply in the \u003cb\u003edepressed\u003c/b\u003e towns of the\u003cbr\u003eCascades was the righteous triumphalism of the owlers as they rejoiced\u003cbr\u003ein the industry \u0027s decline.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_27\u003cbr\u003etype: usage\u003c/p\u003e", "x": -133.13110541027208, "y": -223.21573918988418}, {"color": "#377eb8", "date": "", "id": "depressed_48", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003ed\u003cb\u003eepressed \u003c/b\u003ecigarette sales for a short period, but now\u003cbr\u003ethey \u0027ve zoomed to new highs.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_48\u003cbr\u003etype: usage\u003c/p\u003e", "x": 306.64098610918455, "y": -608.7761654146165}, {"color": "#377eb8", "date": "", "id": "depressed_38", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003edecade of tremendous growth, Sunbelt cities attracted millions\u003cbr\u003eof people from the \u003cb\u003edepressed\u003c/b\u003e urban centers of the North.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_38\u003cbr\u003etype: usage\u003c/p\u003e", "x": -581.7467257563824, "y": -249.39791600114722}, {"color": "#377eb8", "date": "", "id": "depressed_33", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eA flurry of Government and private contracts is energizing the\u003cbr\u003elong \u003cb\u003edepressed\u003c/b\u003e aerospace industry.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_33\u003cbr\u003etype: usage\u003c/p\u003e", "x": -460.96888955399317, "y": -486.66508618281284}, {"color": "#377eb8", "date": "", "id": "depressed_31", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThey offer tax incentives to encourage development in\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e neighborhoods.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_31\u003cbr\u003etype: usage\u003c/p\u003e", "x": -349.20312018640544, "y": -120.58857378385048}, {"color": "#ff7f00", "date": "", "id": "depressed_28", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eRachel E. McCready Letters, Fall 2008 expresses concern about\u003cbr\u003emy critique of the psychiatric label `` premenstrual dysphoric\u003cbr\u003edisorder `` ( PMDD ) in my article, `` Pathologizing Your Period ``\u003cbr\u003eSummer 2008, because she used to become \u003cb\u003edepressed\u003c/b\u003e before her\u003cbr\u003eperiod.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_28\u003cbr\u003etype: usage\u003c/p\u003e", "x": 460.8233496277554, "y": 361.951606442628}, {"color": "#ff7f00", "date": "", "id": "depressed_36", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eit is, I \u0027m hungry y\u0027all and I \u0027m tired and \u003cb\u003edepressed\u003c/b\u003e\u003cbr\u003eand I need someone to talk to.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_36\u003cbr\u003etype: usage\u003c/p\u003e", "x": 408.8415854358278, "y": 621.9178651715498}, {"color": "#ff7f00", "date": "", "id": "depressed_22", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eKidman \u0027s postmarital roles have included a clinically\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e writer ( Virginia Woolf in The Hours for which she\u003cbr\u003ewon an Oscar ), an abused cleaning lady recovering from the death of\u003cbr\u003eher children ( The Human Stain ), a woman barely getting by during the\u003cbr\u003eCivil War ( Cold Mountain ) and a fugitive victimized by nasty\u003cbr\u003etownspeople in the West ( Dogville ).\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_22\u003cbr\u003etype: usage\u003c/p\u003e", "x": 191.42504227780788, "y": 562.3326749490556}, {"color": "#ff7f00", "date": "", "id": "depressed_30", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eDoctors, as Knauth reports, have found that many\u003cbr\u003e\u003cb\u003edepressed\u003c/b\u003e people have abnormally low levels of certain brain\u003cbr\u003echemicals.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_30\u003cbr\u003etype: usage\u003c/p\u003e", "x": -152.23554155865682, "y": 568.5371208051905}, {"color": "#ff7f00", "date": "", "id": "depressed_23", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eso needy, so \u003cb\u003edepressed\u003c/b\u003e, `` Miller said. ``\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: depressed_23\u003cbr\u003etype: usage\u003c/p\u003e", "x": 213.8626278491905, "y": 269.9186719809704}]);
+        edges = new vis.DataSet([{"color": "black", "from": "depressed_27", "label": 4, "to": "depressed_33", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_27", "label": 4, "to": "depressed_38", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_27", "label": 3, "to": "depressed_48", "weight": 3.0, "width": 4}, {"color": "black", "from": "depressed_27", "label": 4, "to": "depressed_31", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_28", "label": 4, "to": "depressed_22", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_28", "label": 4, "to": "depressed_23", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_28", "label": 4, "to": "depressed_36", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_28", "label": 4, "to": "depressed_30", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_48", "label": 3, "to": "depressed_33", "weight": 3.0, "width": 4}, {"color": "black", "from": "depressed_38", "label": 4, "to": "depressed_33", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_38", "label": 4, "to": "depressed_31", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_36", "label": 4, "to": "depressed_23", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_36", "label": 4, "to": "depressed_22", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_36", "label": 4, "to": "depressed_30", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_22", "label": 4, "to": "depressed_30", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_22", "label": 4, "to": "depressed_23", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_30", "label": 4, "to": "depressed_23", "weight": 4.0, "width": 4}, {"color": "black", "from": "depressed_33", "label": 4, "to": "depressed_31", "weight": 4.0, "width": 4}, {"color": "lightgray", "from": "depressed_27", "label": 2, "to": "depressed_23", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_27", "label": 2, "to": "depressed_36", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_27", "label": 2, "to": "depressed_22", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_27", "label": 2, "to": "depressed_28", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_27", "label": 2, "to": "depressed_30", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_28", "label": 2, "to": "depressed_48", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_28", "label": 2, "to": "depressed_38", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_28", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_28", "label": 2, "to": "depressed_33", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_22", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_38", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_30", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_23", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_48", "label": 2, "to": "depressed_36", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_38", "label": 2, "to": "depressed_36", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_38", "label": 2, "to": "depressed_22", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_38", "label": 2, "to": "depressed_30", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_38", "label": 2, "to": "depressed_23", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_36", "label": 2, "to": "depressed_33", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_36", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_22", "label": 2, "to": "depressed_33", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_22", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_30", "label": 2, "to": "depressed_33", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_30", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_23", "label": 2, "to": "depressed_31", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "depressed_23", "label": 2, "to": "depressed_33", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

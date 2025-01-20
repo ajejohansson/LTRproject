@@ -1,0 +1,124 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1>2</h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#ff7f00", "date": "", "id": "crippled_10", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eEyes closed there was no \u003cb\u003ecrippled\u003c/b\u003e chest of drawers\u003cbr\u003eacross the way, no half-painted dresser, no smelly rug rolled up in\u003cbr\u003ethe corner, no curled paint petals\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_10\u003cbr\u003etype: usage\u003c/p\u003e", "x": 697.1262998478426, "y": -387.94995573743194}, {"color": "#ff7f00", "date": "", "id": "crippled_14", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eAnd his feet in their immaculate boots have exactly the\u003cbr\u003e\u003cb\u003ecrippled\u003c/b\u003e rhythm of MICHAEL \u0027s own.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_14\u003cbr\u003etype: usage\u003c/p\u003e", "x": 131.14007206803393, "y": -518.4679471366451}, {"color": "#ff7f00", "date": "", "id": "crippled_11", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eOur \u003cb\u003ecrippled\u003c/b\u003e antigravity, working on the irregularities\u003cbr\u003eof the ground as they came along below, made the ride rhythmically\u003cbr\u003ebumpy, you see.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_11\u003cbr\u003etype: usage\u003c/p\u003e", "x": 482.34990482239203, "y": -129.67143122941064}, {"color": "#ff7f00", "date": "", "id": "crippled_9", "label": "1", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThey flew the last fifteen miles in silence, Moshe certain that\u003cbr\u003ehe could have run the distance faster than the \u003cb\u003ecrippled\u003c/b\u003e little\u003cbr\u003eaircraft was flying.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_9\u003cbr\u003etype: usage\u003c/p\u003e", "x": 750.0, "y": -18.53547594508713}, {"color": "#377eb8", "date": "", "id": "crippled_13", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eway you \u0027d sweep a \u003cb\u003ecrippled\u003c/b\u003e cockroach into the\u003cbr\u003efire.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_13\u003cbr\u003etype: usage\u003c/p\u003e", "x": 12.00243913183423, "y": 557.6589161327403}, {"color": "#377eb8", "date": "", "id": "crippled_15", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003ePatrick had told him of the incredible beauty of the\u003cbr\u003e\u003cb\u003ecrippled\u003c/b\u003e Joan Garrity.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_15\u003cbr\u003etype: usage\u003c/p\u003e", "x": -612.2662150933417, "y": 130.75633398705125}, {"color": "#377eb8", "date": "", "id": "crippled_12", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003eThere was only Old Theo, a mule with a \u003cb\u003ecrippled\u003c/b\u003e\u003cbr\u003ehip.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_12\u003cbr\u003etype: usage\u003c/p\u003e", "x": -279.45080503797647, "y": 426.8589048769133}, {"color": "#377eb8", "date": "", "id": "crippled_16", "label": "0", "physics": false, "shape": "circle", "size": 10, "title": "\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003edirection: he worked sporadically in little theater, as a box\u003cbr\u003eboy in supermarkets, as a chauffeur for a \u003cb\u003ecrippled\u003c/b\u003e woman, and\u003cbr\u003eeven served for a time as a G.1.\u003cspan style=\"color:#808080;\"\u003e\u003c/span\u003e\u003cp style=\"font-size:8px;\"\u003e\u003cbr\u003egrouping: 2\u003cbr\u003eidentifier: crippled_16\u003cbr\u003etype: usage\u003c/p\u003e", "x": -491.917786790831, "y": 324.98987470523565}]);
+        edges = new vis.DataSet([{"color": "black", "from": "crippled_10", "label": 3, "to": "crippled_11", "weight": 3.0, "width": 4}, {"color": "black", "from": "crippled_10", "label": 4, "to": "crippled_9", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_13", "label": 4, "to": "crippled_12", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_13", "label": 3, "to": "crippled_15", "weight": 3.0, "width": 4}, {"color": "black", "from": "crippled_13", "label": 3, "to": "crippled_16", "weight": 3.0, "width": 4}, {"color": "black", "from": "crippled_11", "label": 4, "to": "crippled_9", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_15", "label": 4, "to": "crippled_16", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_15", "label": 4, "to": "crippled_12", "weight": 4.0, "width": 4}, {"color": "black", "from": "crippled_12", "label": 4, "to": "crippled_16", "weight": 4.0, "width": 4}, {"color": "lightgray", "from": "crippled_10", "label": 2, "to": "crippled_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_10", "label": 2, "to": "crippled_13", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_10", "label": 2, "to": "crippled_14", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_10", "label": 2, "to": "crippled_15", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_10", "label": 2, "to": "crippled_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_15", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_13", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_14", "label": 2, "to": "crippled_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_13", "label": 2, "to": "crippled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_13", "label": 2, "to": "crippled_11", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_11", "label": 2, "to": "crippled_15", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_11", "label": 2, "to": "crippled_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_11", "label": 2, "to": "crippled_16", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_15", "label": 2, "to": "crippled_9", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_9", "label": 2, "to": "crippled_12", "weight": 2.0, "width": 2}, {"color": "lightgray", "from": "crippled_9", "label": 2, "to": "crippled_16", "weight": 2.0, "width": 2}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "nodes",
+            "edges"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
